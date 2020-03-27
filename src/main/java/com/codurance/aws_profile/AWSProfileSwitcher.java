@@ -17,9 +17,7 @@ public class AWSProfileSwitcher {
   public void list() throws FileNotFoundException {
     StringBuilder profile = new StringBuilder();
 
-    File file = new File(pathConfig);
-
-    Scanner reader = new Scanner(file);
+    Scanner reader = new Scanner(findFile());
 
     while(reader.hasNextLine()){
       String line = reader.nextLine();
@@ -32,5 +30,9 @@ public class AWSProfileSwitcher {
     String result = profile.toString().trim();
 
     printer.print(result);
+  }
+
+  private File findFile() {
+    return new File(pathConfig);
   }
 }
