@@ -31,6 +31,6 @@ public class AWSProfileSwitcher {
 
     String result = profile.toString().trim();
 
-    printer.printline(result);
+    printer.print(result);
   }
 }

@@ -4,4 +4,8 @@ public class Printer {
   public void printline(String message) {
     throw new UnsupportedOperationException("implement me!");
   }
+
+  public void print(String result) {
+
+  }
 }
