@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.FileNotFoundException;
 
@@ -18,14 +19,11 @@ public class Acceptance {
 //  [profile toms_profile]
 //  output = json
 //  region = eu-west-1
+
   // repo fetch files from
   // file object migrate -
   @Test
   void lists_available_profiles() throws FileNotFoundException {
-
-
-    // tree search
-
     String filePath = System.getProperty("user.dir") + "/src/test/java/com/codurance/aws_profile/aws-test" + "/config";
 
     AWSProfileSwitcher awsProfileSwitcher = new AWSProfileSwitcher(printer, filePath);
