@@ -1,0 +1,3 @@
+[profile toms_profile]
+output = json
+region = eu-west-1
