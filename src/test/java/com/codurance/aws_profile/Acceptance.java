@@ -24,7 +24,7 @@ public class Acceptance {
   // file object migrate -
   @Test
   void lists_available_profiles() throws FileNotFoundException {
-    String filePath = System.getProperty("user.dir") + "/src/test/java/com/codurance/aws_profile/aws-test" + "/config";
+    String filePath = System.getProperty("user.dir") + "/src/test/java/com/codurance/aws_profile/aws-test" + "/credentials";
 
     AWSProfileSwitcher awsProfileSwitcher = new AWSProfileSwitcher(printer, filePath);
 

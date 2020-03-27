@@ -22,9 +22,15 @@ public class AWSProfileSwitcher {
     Scanner reader = new Scanner(file);
 
     while(reader.hasNextLine()){
-      profile.append(reader.nextLine());
+      String line = reader.nextLine();
+      if (line.charAt(0) == '['){
+        profile.append(line.substring(1,line.length() - 1));
+        profile.append("\n");
+      }
     }
 
-    printer.printline(profile.toString());
+    String result = profile.toString().trim();
+
+    printer.printline(result);
   }
 }
