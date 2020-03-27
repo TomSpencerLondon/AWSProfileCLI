@@ -6,7 +6,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
+import static java.util.Arrays.asList;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -17,8 +19,11 @@ public class AcceptanceTest {
 
   @Test
   void apps_list_shows_profiles() throws FileNotFoundException {
-    String filePath = System.getProperty("user.dir") + "/src/test/java/com/codurance/aws_profile/aws-test" + "/credentials";
-
+    String[] path = {"/src/test/",
+            "java/com/codurance/",
+            "aws_profile/aws-test",
+            "/credentials"};
+    String filePath = System.getProperty("user.dir") + String.join("", path);
     AWSProfileSwitcher awsProfileSwitcher = new AWSProfileSwitcher(printer, filePath);
 
     awsProfileSwitcher.execute("aps list");
