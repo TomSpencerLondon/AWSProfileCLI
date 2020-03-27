@@ -24,6 +24,7 @@ public class AcceptanceTest {
     awsProfileSwitcher.execute("aps list");
 
     verify(printer).print("toms_profile\n" +
-                          "harrys_profile");
+                          "harrys_profile\n" +
+                          "jerrys_profile");
   }
 }

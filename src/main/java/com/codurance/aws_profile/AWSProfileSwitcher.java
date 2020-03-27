@@ -22,7 +22,7 @@ public class AWSProfileSwitcher {
 
   public void list() throws FileNotFoundException {
     StringBuilder profile = new StringBuilder();
-    Scanner reader = new Scanner(findFile());
+    Scanner reader = new Scanner(new File(pathConfig));
 
     while(reader.hasNextLine()){
       String line = reader.nextLine();
@@ -33,11 +33,6 @@ public class AWSProfileSwitcher {
     }
 
     String result = profile.toString().trim();
-
     printer.print(result);
-  }
-
-  private File findFile() {
-    return new File(pathConfig);
   }
 }
