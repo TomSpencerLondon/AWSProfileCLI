@@ -14,9 +14,14 @@ public class AWSProfileSwitcher {
     this.pathConfig = pathConfig;
   }
 
+  public void execute(String command) throws FileNotFoundException {
+    if (command.equals("aps list")) {
+      list();
+    }
+  }
+
   public void list() throws FileNotFoundException {
     StringBuilder profile = new StringBuilder();
-
     Scanner reader = new Scanner(findFile());
 
     while(reader.hasNextLine()){
