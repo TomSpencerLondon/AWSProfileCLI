@@ -1,12 +1,14 @@
 package com.codurance.aws_profile;
-
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AWSProfileSwitcher {
   private final Printer printer;
   private final String pathConfig;
+  private Map<String, String> env;
 
 
   public AWSProfileSwitcher(Printer printer, String pathConfig) {
@@ -14,11 +16,28 @@ public class AWSProfileSwitcher {
     this.pathConfig = pathConfig;
   }
 
-  public void execute(String command) throws FileNotFoundException {
+  public Map<String, String> getEnv() {
+    return env;
+  }
+
+  public void execute(String command) throws IOException {
     if (command.equals("aps list")) {
       list();
     }
+    if (command.contains("switch")){
+      String[] switchCommands = command.split(" ");
+      String profile = switchCommands[2];
+      switchProfile(profile);
+    }
   }
+
+  public void switchProfile(String profile) {
+    ProcessBuilder pb = new ProcessBuilder();
+    env = pb.environment();
+    env.put("AWS_PROFILE", profile);
+  }
+
+
 
   public void list() throws FileNotFoundException {
     StringBuilder profile = new StringBuilder();
